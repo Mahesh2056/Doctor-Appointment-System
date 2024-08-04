@@ -40,5 +40,9 @@ jspm_packages
 **/node_modules
 /server/node_modules
 /client/node_modules
+
+# Environment files
+.env
+
 #Excluding build directory
 public/

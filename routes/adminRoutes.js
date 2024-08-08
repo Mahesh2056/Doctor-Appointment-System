@@ -1,7 +1,7 @@
 const express = require("express");
 const { 
     getAllUsersController, 
-    getAllDoctorsController 
+    getAllDoctorsController, 
 } = require("../controllers/adminCtrl");
 const authMiddleware = require("../middlewares/authMiddleware");
 

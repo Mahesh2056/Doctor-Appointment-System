@@ -1,5 +1,4 @@
 const doctorModel = require("../models/doctorModel");
-import { message } from 'antd';
 const userModel = require("../models/userModels");
 
 const getAllUsersController = async (req, res) => {

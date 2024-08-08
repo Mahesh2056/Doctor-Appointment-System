@@ -27,10 +27,10 @@ const ApplyDoctor = () => {
            ); 
            dispatch(hideLoading());
            if (res.data.success) {
-            message.success(res.data.success);
+            message.success(res.data.message);
             navigate("/");
            } else {
-            message.error(res.data.success);
+            message.error(res.data.message);
            }
         } catch (error) {
             dispatch(hideLoading());

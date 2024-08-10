@@ -44,5 +44,3 @@ jspm_packages
 # Environment files
 .env
 
-#Excluding build directory
-public/

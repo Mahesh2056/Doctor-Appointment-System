@@ -59,7 +59,7 @@ const ApplyDoctor = () => {
                 required 
                 rules={[{required: true}]}
               >
-                <Input type="text" placeholder="your name" />
+                <Input type="text" placeholder="your first name" />
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>

@@ -126,7 +126,7 @@ const BookingPage = () => {
                 <TimePicker
                   aria-required={"true"}
                   format="HH:mm"
-                  className="m-2"
+                  className="mt-3"
                   onChange={(value) => {
                     setTime(moment(value).format("HH:mm"));
                   }}

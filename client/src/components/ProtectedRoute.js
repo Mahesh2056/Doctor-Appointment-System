@@ -27,12 +27,12 @@ export default function ProtectedRoute({ children }) {
             if (res.data.success) {
                 dispatch(setUser(res.data.data));
             } else {
-                <Navigate to="/login" />;
                 localStorage.clear();
+                <Navigate to="/login" />;
             }
         } catch (error) {
-            dispatch(hideLoading());
             localStorage.clear();
+            dispatch(hideLoading());
             console.log(error);
         }
     };

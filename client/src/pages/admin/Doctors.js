@@ -5,7 +5,6 @@ import { message, Table } from "antd";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
-
   //getUsers
   const getDoctors = async () => {
     try {
@@ -23,7 +22,7 @@ const Doctors = () => {
   };
 
   // handle account
-  const handleAccountStatus = async(record, status) => {
+  const handleAccountStatus = async (record, status) => {
     try {
       const res = await axios.post(
         "/api/v1/admin/changeAccountStatus",
@@ -71,9 +70,9 @@ const Doctors = () => {
       render: (text, record) => (
         <div className="d-flex">
           {record.status === "pending" ? (
-            <button 
-            className="btn btn-success"
-            onClick={() => handleAccountStatus(record, "approved")}
+            <button
+              className="btn btn-success"
+              onClick={() => handleAccountStatus(record, "approved")}
             >
               Approve
             </button>
@@ -87,8 +86,8 @@ const Doctors = () => {
 
   return (
     <Layout>
-        <h1 className="text-center m-3">All Doctors</h1>
-        <Table columns={columns} dataSource={doctors} />
+      <h1 className="text-center m-3">All Doctors</h1>
+      <Table columns={columns} dataSource={doctors} />
     </Layout>
   );
 };

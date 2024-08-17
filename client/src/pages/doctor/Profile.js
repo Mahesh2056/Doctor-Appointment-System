@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout";
+import Layout from "./../../components/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Col, Form, Input, Row, TimePicker, message } from "antd";
@@ -13,7 +13,6 @@ const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-
   // update doc ==========
   //handle form
   const handleFinish = async (values) => {
@@ -29,27 +28,28 @@ const Profile = () => {
             moment(values.timings[1]).format("HH:mm"),
           ],
         },
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      dispatch(hideLoading());
+      if (res.data.success) {
+        message.success(res.data.message);
+        navigate("/");
+      } else {
+        message.error(res.data.success);
       }
-     );
-     dispatch(hideLoading());
-     if (res.data.success) {
-      message.success(res.data.message);
-      navigate("/");
-     } else {
-      message.error(res.data.success);
-     }
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
       message.error("Somthing Went Wrrong ");
     }
   };
+  // update doc ==========
 
-  //getDoc Details
+  //getDOc Details
   const getDoctorInfo = async () => {
     try {
       const res = await axios.post(
@@ -71,63 +71,62 @@ const Profile = () => {
 
   useEffect(() => {
     getDoctorInfo();
-     //eslint-disable-next-line
+    //eslint-disable-next-line
   }, []);
-
   return (
     <Layout>
-        <h1>Manage Profile</h1>
-        {doctor && (
-          <Form
-            layout="vertical"
-            onFinish={handleFinish}
-            className="m-3"
-            initialValues={{
-              ...doctor,
-              timings: [
-                moment(doctor.timings[0], "HH:mm"),
-                moment(doctor.timings[1], "HH:mm"),
-              ],
-            }}
-          >
-            <h4 className="">Personal Details : </h4>
-            <Row gutter={20}>
+      <h1>Manage Profile</h1>
+      {doctor && (
+        <Form
+          layout="vertical"
+          onFinish={handleFinish}
+          className="m-3"
+          initialValues={{
+            ...doctor,
+            timings: [
+              moment(doctor.timings[0], "HH:mm"),
+              moment(doctor.timings[1], "HH:mm"),
+            ],
+          }}
+        >
+          <h4 className="">Personal Details : </h4>
+          <Row gutter={20}>
             <Col xs={24} md={24} lg={8}>
-            <Form.Item
-              label="First Name"
-              name="firstName"
-              required
-              rules={[{ required: true }]}
-            >
-              <Input type="text" placeholder="your first name" />
-            </Form.Item>
+              <Form.Item
+                label="First Name"
+                name="firstName"
+                required
+                rules={[{ required: true }]}
+              >
+                <Input type="text" placeholder="your first name" />
+              </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
-            <Form.Item
-              label="Last Name"
-              name="lastName"
-              required
-              rules={[{ required: true }]}
-            >
-              <Input type="text" placeholder="your last name" />
-            </Form.Item>
+              <Form.Item
+                label="Last Name"
+                name="lastName"
+                required
+                rules={[{ required: true }]}
+              >
+                <Input type="text" placeholder="your last name" />
+              </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
-            <Form.Item
-              label="Phone No"
-              name="phone"
-              required
-              rules={[{ required: true }]}
+              <Form.Item
+                label="Phone No"
+                name="phone"
+                required
+                rules={[{ required: true }]}
               >
                 <Input type="text" placeholder="your contact no" />
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
-            <Form.Item
-              label="Email"
-              name="email"
-              required
-              rules={[{ required: true }]}
+              <Form.Item
+                label="Email"
+                name="email"
+                required
+                rules={[{ required: true }]}
               >
                 <Input type="email" placeholder="your email address" />
               </Form.Item>
@@ -138,7 +137,7 @@ const Profile = () => {
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
-            <Form.Item
+              <Form.Item
                 label="Address"
                 name="address"
                 required
@@ -147,9 +146,9 @@ const Profile = () => {
                 <Input type="text" placeholder="your clinic address" />
               </Form.Item>
             </Col>
-            </Row>
-            <h4>Professional Details :</h4>
-            <Row gutter={20}>
+          </Row>
+          <h4>Professional Details :</h4>
+          <Row gutter={20}>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
                 label="Specialization"

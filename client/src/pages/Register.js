@@ -34,7 +34,7 @@ const Register = () => {
           onFinish={onfinishHandler}
           className="register-form"
         >
-          <h3 className="text-center">Register Formm</h3>
+          <h3 className="text-center">Register Form</h3>
           <Form.Item label="Name" name="name">
             <Input type="text" required />
           </Form.Item>
